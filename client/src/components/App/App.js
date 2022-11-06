@@ -49,7 +49,7 @@ class App extends React.Component {
         </div>
         <SearchBar searchImages={this.searchImages} rerender={this.rerender}/>
         <ImagesList images={this.state.images} />
-        <p>NOTE: "Any image" search sometimes returns empty images. we tryna fix it</p>
+        <p>NOTE: "Any image" search sometimes returns empty images</p>
         <p>Limit is 200 images</p>
       </div>
     );

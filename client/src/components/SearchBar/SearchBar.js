@@ -70,7 +70,7 @@ class SearchBar extends React.Component {
                         {this.renderFileTypeOptions()}
                     </ul>
                 </div>
-                <input type="text" onChange={this.handleTermChange} placeholder="Try: Shownu Monsta X"/>
+                <input type="text" onChange={this.handleTermChange} placeholder="-"/>
                 <button onClick={this.handleSearch}>Release Flavor</button>
             </div>
         )
