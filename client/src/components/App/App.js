@@ -25,16 +25,17 @@ class App extends React.Component {
 
   async searchImages(term, start, imagesToSearch, fileTypeOption) {
     let newImages = await getImages(term, start, imagesToSearch, fileTypeOption);
-    console.log(newImages);
 
-    let allImages = this.state.images;
-    for (let i = 0; i < newImages.length; i++) {
-      allImages.push(newImages[i]);
+    if (newImages) {
+      let allImages = this.state.images;
+      for (let i = 0; i < newImages.length; i++) {
+        allImages.push(newImages[i]);
+      }
+  
+      this.setState({
+        images: allImages
+      });
     }
-
-    this.setState({
-      images: allImages
-    });
   }
 
   rerender() {
