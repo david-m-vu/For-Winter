@@ -1,7 +1,7 @@
 const baseURL = "http://localhost:3000/api/images";
 
 export const getImages = async (term, start, imagesToSearch, fileTypeOption) => {
-    let requestURL = baseURL + "?q=" + term + "&start=" + start + "&num=" + imagesToSearch + "&fileType=" + fileTypeOption;
+    let requestURL = `${baseURL}?q=${term}&start=${start}&num=${imagesToSearch}&fileType=${fileTypeOption}`;
     try {
         let response = await fetch(requestURL);
         if (response.ok) {
