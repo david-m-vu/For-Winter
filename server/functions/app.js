@@ -25,12 +25,13 @@ app.use(bodyParser.urlencoded({extended: true, limit:'1kb'}));
 app.use(xss());
 
 app.get("/.netlify/functions/app/api/images", async (req, res, next) => {
-    const term = req.query.q;
-    const start = req.query.start;
-    const imagesToSearch = req.query.num;
-    const fileTypeOption = req.query.fileType;
-    let allImages = await fetchImages(term, start, imagesToSearch, fileTypeOption);
-    res.status(200).json(allImages);
+    // const term = req.query.q;
+    // const start = req.query.start;
+    // const imagesToSearch = req.query.num;
+    // const fileTypeOption = req.query.fileType;
+    // let allImages = await fetchImages(term, start, imagesToSearch, fileTypeOption);
+    // res.status(200).json(allImages);
+    res.status(200).json({"COOL": "YOU MADE IT"});
 })
 
 app.get("/.netlify/functions/app/", (req, res) => {
