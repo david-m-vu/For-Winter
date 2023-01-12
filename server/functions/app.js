@@ -34,7 +34,7 @@ app.get("/api/images", async (req, res, next) => {
 })
 
 app.get("/", (req, res) => {
-    res.json({"Hi": "test"}); 
+    res.status(200).json({"Hi": "test"}); 
 })
 
 module.exports.handler = serverless(app);
