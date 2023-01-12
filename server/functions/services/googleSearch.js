@@ -2,8 +2,8 @@ const { v4 } = require("uuid");
 const fetch = require("node-fetch");
 
 const googleBaseURL = "https://www.googleapis.com/customsearch/v1?";
-const apiKey = "AIzaSyD4P6ynpyUFhJqGRirSJQ1BB_dtWRKhXyI"; //process.env.API_KEY;
-const engineID = "92823ef04d34141ba"; //process.env.ENGINE_ID;
+const apiKey = process.env.API_KEY;
+const engineID = process.env.ENGINE_ID;
 
 const fetchImages = async (term, start, imagesToSearch, fileTypeOption) => {
     if (term === "") {
