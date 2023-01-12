@@ -18,9 +18,7 @@ app.use(bodyParser.json({limit:'1kb'}));
 app.use(bodyParser.urlencoded({extended: true, limit:'1kb'}));
 app.use(xss());
 
-const imageAPIRouter = express.Router();
-
-imageAPIRouter.get("/", async (req, res, next) => {
+app.get("/api/images", cors(), async (req, res, next) => {
     const term = req.query.q;
     const start = req.query.start;
     const imagesToSearch = req.query.num;
@@ -29,10 +27,12 @@ imageAPIRouter.get("/", async (req, res, next) => {
     res.status(200).json(allImages);
 })
 
-app.use("/api/images", imageAPIRouter);
+app.get("/", cors(), (req, res) => {
+    res.json({"Hi": "test"});
+})
 
 module.exports.handler = serverless(app);
 
-app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
-})
+// app.listen(PORT, () => {
+//     console.log(`Server is listening on port ${PORT}`);
+// })
