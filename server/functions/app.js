@@ -29,6 +29,7 @@ app.get("/.netlify/functions/app/api/images/", async (req, res, next) => {
     const start = req.query.start;
     const imagesToSearch = req.query.num;
     const fileTypeOption = req.query.fileType;
+    console.log("Hi")
     let allImages = await fetchImages(term, start, imagesToSearch, fileTypeOption);
     res.status(200).json(allImages);
 })
