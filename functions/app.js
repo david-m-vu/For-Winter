@@ -1,4 +1,5 @@
 const express = require("express");
+const serverless = require("serverless-http");
 const cors = require("cors");
 const morgan = require("morgan");
 const app = express();
@@ -7,7 +8,7 @@ const bodyParser = require('body-parser');
 
 const { fetchImages } = require("./services/googleSearch");
 
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(morgan("dev"));
@@ -26,6 +27,8 @@ app.get("/api/images", async (req, res, next) => {
     res.status(200).json(allImages);
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
-})
+module.exports.handler = serverless(app);
+
+// app.listen(PORT, () => {
+//     console.log(`Server is listening on port ${PORT}`);
+// })
