@@ -9,14 +9,14 @@ const { fetchImages } = require("./services/googleSearch");
 
 // const PORT = process.env.PORT || 3000;
 
-const corsOptions = {
-    origin: "https://dasima-frontend.netlify.app/",
-    credentials: true,
-    optionSuccessStatus: 200
-}
+// const corsOptions = {
+//     origin: "https://dasima-frontend.netlify.app/",
+//     credentials: true,
+//     optionSuccessStatus: 200
+// }
 
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.static("client"));
