@@ -25,7 +25,7 @@ class App extends React.Component {
 
   async testing() {
     try {
-      let response = await fetch("https://dasima-backend.netlify.app/");
+      let response = await fetch("https://dasima-backend.netlify.app/.netlify/functions/app");
       if (response.ok) {
         let responseJSON = await response.json();
         console.log(responseJSON);
