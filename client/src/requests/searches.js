@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:3000/api/images";
+const baseURL = "https://dasima-backend.netlify.app/api/images";
 
 export const getImages = async (term, start, imagesToSearch, fileTypeOption) => {
     let requestURL = `${baseURL}?q=${term}&start=${start}&num=${imagesToSearch}&fileType=${fileTypeOption}`;
