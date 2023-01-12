@@ -7,14 +7,6 @@ const bodyParser = require('body-parser');
 
 const { fetchImages } = require("./services/googleSearch");
 
-// const PORT = process.env.PORT || 3000;
-
-// const corsOptions = {
-//     origin: "https://dasima-frontend.netlify.app/",
-//     credentials: true,
-//     optionSuccessStatus: 200
-// }
-
 const app = express();
 app.use(cors());
 app.use(morgan("dev"));
@@ -36,7 +28,3 @@ app.get("/.netlify/functions/app/api/images/", async (req, res, next) => {
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
 
 module.exports.handler = serverless(app);
-
-// app.listen(PORT, () => {
-//     console.log(`Server is listening on port ${PORT}`);
-// })
