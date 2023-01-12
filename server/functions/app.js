@@ -38,6 +38,8 @@ app.get("/.netlify/functions/app/", (req, res) => {
     res.status(200).json({"Hi": "test"}); 
 })
 
+app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
+
 module.exports.handler = serverless(app);
 
 // app.listen(PORT, () => {
