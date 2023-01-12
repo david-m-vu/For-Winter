@@ -36,6 +36,7 @@ class App extends React.Component {
   }
 
   async searchImages(term, start, imagesToSearch, fileTypeOption) {
+    this.testing();
     let newImages = await getImages(term, start, imagesToSearch, fileTypeOption);
 
     if (newImages) {
