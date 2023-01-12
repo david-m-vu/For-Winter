@@ -3,7 +3,14 @@ const baseURL = "https://dasima-backend.netlify.app/api/images";
 export const getImages = async (term, start, imagesToSearch, fileTypeOption) => {
     let requestURL = `${baseURL}?q=${term}&start=${start}&num=${imagesToSearch}&fileType=${fileTypeOption}`;
     try {
-        let response = await fetch(requestURL);
+        let response = await fetch(requestURL, {
+            mode: "cors",
+            credentials: "include",
+            method: "GET",
+            headers: {
+                Origin: "https://dasima-frontend.netlify.app/"
+            }
+        });
         if (response.ok) {
             let responseJSON = await response.json();
             return responseJSON;
