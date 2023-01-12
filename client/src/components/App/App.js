@@ -23,20 +23,7 @@ class App extends React.Component {
     this.rerender = this.rerender.bind(this);
   }
 
-  async testing() {
-    try {
-      let response = await fetch("https://dasima-backend.netlify.app/.netlify/functions/app");
-      if (response.ok) {
-        let responseJSON = await response.json();
-        console.log(responseJSON);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   async searchImages(term, start, imagesToSearch, fileTypeOption) {
-    this.testing();
     let newImages = await getImages(term, start, imagesToSearch, fileTypeOption);
 
     if (newImages) {
