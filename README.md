@@ -1,2 +1,3 @@
 # Fun image sharing app
-WIP URL: dasima.netlify.app/
+URL: dasima.netlify.app/  
+WIP
