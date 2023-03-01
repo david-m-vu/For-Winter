@@ -1,8 +1,9 @@
 import './App.css';
 import React from "react";
-import SearchBar from "../SearchBar/SearchBar";
-import ImagesList from "../ImageList/ImageList";
-import { getImages } from "../../requests/searches";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Main from "../Main/Main";
+import LandingPage from "../LandingPage/LandingPage";
+
 
 // const tempImages = [
 //   {link: "https://media.tenor.com/H7LuMYCKXdAAAAAd/aespa-winter.gif", id: 1},
@@ -13,46 +14,17 @@ import { getImages } from "../../requests/searches";
 // ]
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      images: []
-    };
-
-    this.searchImages = this.searchImages.bind(this);
-    this.rerender = this.rerender.bind(this);
-  }
-
-  async searchImages(term, start, imagesToSearch, fileTypeOption) {
-    let newImages = await getImages(term, start, imagesToSearch, fileTypeOption);
-
-    if (newImages) {
-      let allImages = this.state.images;
-      for (let i = 0; i < newImages.length; i++) {
-        allImages.push(newImages[i]);
-      }
-  
-      this.setState({
-        images: allImages
-      });
-    }
-  }
-
-  rerender() {
-    this.setState({});
-  }
-  
   render() {
     return (
       <div className="App">
-        <div className="title">
-          <h1>D A S I M A</h1>
-        </div>
-        <SearchBar searchImages={this.searchImages} rerender={this.rerender}/>
-        <ImagesList images={this.state.images} />
-        <p>NOTE: "Any image" search sometimes returns empty images</p>
-        <p>Limit is 200 images</p>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/main" element={<Main />} />
+          </Routes>
+        </Router>
       </div>
+
     );
   }
 }

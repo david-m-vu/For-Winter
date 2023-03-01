@@ -32,7 +32,7 @@ class SearchBar extends React.Component {
         this.setState({
             fileType: fileTypeOption
         })
-        this.props.rerender();
+        
     }
 
     //Not an event handler so don't need to bind 'this'
@@ -52,11 +52,12 @@ class SearchBar extends React.Component {
         })
     }
 
-    handleSearch() {
-        if (this.state.term !== "") {
+    handleSearch(event) {
+        if (this.state.term !== "" && (event.type === "click" || event.keyCode === 13)) {
             this.props.searchImages(this.state.term, this.state.start, this.state.imagesToSearch, this.state.fileType)
             this.setState({
-                start: this.state.start + 10
+                start: this.state.start + 10,
+                term: ""
             })
         }
     }
@@ -65,13 +66,13 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className="SearchBar">
+                <input className="searchInput" type="text" onKeyDown={this.handleSearch} onChange={this.handleTermChange} value={this.state.term} placeholder="Search Here"/>
+                <button className="searchButton" onClick={this.handleSearch}>+</button>
                 <div className="options">
                     <ul>
                         {this.renderFileTypeOptions()}
                     </ul>
                 </div>
-                <input type="text" onChange={this.handleTermChange} placeholder="-"/>
-                <button onClick={this.handleSearch}>Release Flavor</button>
             </div>
         )
     }

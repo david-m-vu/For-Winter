@@ -26,22 +26,30 @@
     color: seagreen;
 }
 
-input {
-    width: 15rem;
-    border-radius: 4px;
+.searchInput {
+    width: 20vw;
+    padding: 0.5em;
     font-size: 0.77rem;
+    font-family: "Rubik", sans-serif;
+    border-radius: 30px;
+    border: 1px solid black;
+    background-color: rgba(214, 24, 176, 0.2);
+    color: white;
+    outline: 0;
 }
 
-button {
-    margin-left: 20px;
-    border-radius: 4px;
-    background-color: wheat;
+.searchButton {
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: seagreen;
     font-weight: 700;
+    font-size: 1rem;
     transition: background-color 0.5s;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
 }
 
-button:hover {
+.searchButton:hover {
     cursor: pointer;
-    background-color: #d8b676;
+    background-color: #81d876;
 }

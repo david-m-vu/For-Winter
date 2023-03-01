@@ -1,0 +1,18 @@
+.Main {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #0b0d0c;
+}
+
+.searchArea {
+    padding-top: 3vh;
+}
+
+.homeIcon {
+    position: absolute;
+    max-width: 2.5em;
+    min-height: 2em;
+    left: 0.1em;
+    top: 0.1em;
+}

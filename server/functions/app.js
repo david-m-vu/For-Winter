@@ -16,6 +16,10 @@ app.use(bodyParser.json({limit:'1kb'}));
 app.use(bodyParser.urlencoded({extended: true, limit:'1kb'}));
 app.use(xss());
 
+app.get("/.netlify/functions/app", async (req, res, next) => {
+    res.status(200).send("Dasima web server");
+})
+
 app.get("/.netlify/functions/app/api/images/", async (req, res, next) => {
     const term = req.query.q;
     const start = req.query.start;
