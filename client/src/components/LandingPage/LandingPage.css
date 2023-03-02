@@ -37,7 +37,7 @@
     font-family: "Rubik", sans-serif;
     color: white;
     border-radius: 30px;
-    border: 1px solid #EF539D;
+    border: 2px solid #EF539D;
     padding: 0 3em;
     letter-spacing: 0.2em;
 }
@@ -48,7 +48,7 @@
     letter-spacing: 0;
 
     transition: background-color 1s, border-color 1s, letter-spacing 1s;
-    border: 1px solid white;
+    border: 2px solid white;
     cursor: pointer;
 }
 
@@ -62,7 +62,7 @@
     letter-spacing: 0.3em;
     line-height: 120%;
 
-    animation: background-pan 3s linear infinite;
+    animation: background-pan 2.5s linear infinite;
     animation-fill-mode: both;
     background: linear-gradient(
         to right,
@@ -71,6 +71,13 @@
         white,
         #EF539D
     );
+    /* background: linear-gradient(
+        to right,
+        var(--purple), 
+        var(--violet),
+        white,
+        var(--purple)
+    ); */
     background-size: 200%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -118,9 +125,9 @@
 
 .diamond {
     position: absolute; 
-    scale: 0.5;
+    scale: 1;
     /* left: 70%; */
-    left: 87%;
+    left: 100%;
     animation: rotate 30s linear infinite;
     opacity: 1;
 }
@@ -134,5 +141,13 @@
         rotate: 0deg;
     } to {
         rotate: 360deg;
+    }
+}
+
+@media only screen and (max-width: 1260px) {
+    .diamond {
+        scale: 0.5;
+        bottom: 60%;
+        left: 32%;
     }
 }

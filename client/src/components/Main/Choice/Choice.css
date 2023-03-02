@@ -1,0 +1,7 @@
+.Choice img {
+    height: 300px;
+    max-width: 400px;
+    margin: 0 1em;
+    border-radius: 25px;
+    box-shadow: 2px 2px 3px #EF539D;
+}

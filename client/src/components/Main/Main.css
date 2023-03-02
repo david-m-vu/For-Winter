@@ -1,18 +1,24 @@
 .Main {
+    position: relative;
     margin: 0;
     padding: 0;
-    height: 100vh;
     background-color: #0b0d0c;
+    height: 100vh;
 }
 
 .searchArea {
     padding-top: 3vh;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .homeIcon {
     position: absolute;
     max-width: 2.5em;
     min-height: 2em;
-    left: 0.1em;
-    top: 0.1em;
+    padding: 1em;
+    left: 0;
+    top: 0;
+    z-index: 2
 }

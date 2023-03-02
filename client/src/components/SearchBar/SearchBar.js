@@ -1,5 +1,6 @@
 import React from "react";
 import "./SearchBar.css";
+import diceIcon from "./dice-icon-white.png";
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -32,16 +33,16 @@ class SearchBar extends React.Component {
         this.setState({
             fileType: fileTypeOption
         })
-        
+
     }
 
     //Not an event handler so don't need to bind 'this'
     renderFileTypeOptions() {
         return Object.keys(this.fileTypeOptions).map((fileTypeOption) => {
             let fileType = this.fileTypeOptions[fileTypeOption];
-            return <li className={this.getFileTypeClass(fileType)} 
-                    key={fileType} 
-                    onClick={this.handleFileTypeChange.bind(this, fileType)}>
+            return <li className={this.getFileTypeClass(fileType)}
+                key={fileType}
+                onClick={this.handleFileTypeChange.bind(this, fileType)}>
                 {fileTypeOption}</li>
         })
     }
@@ -66,8 +67,11 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className="SearchBar">
-                <input className="searchInput" type="text" onKeyDown={this.handleSearch} onChange={this.handleTermChange} value={this.state.term} placeholder="Search Here"/>
-                <button className="searchButton" onClick={this.handleSearch}>+</button>
+                <div className="search">
+                    <img className="dice" src={diceIcon} alt="dice"/>
+                    <input className="searchInput" type="text" onKeyDown={this.handleSearch} onChange={this.handleTermChange} value={this.state.term} placeholder="Search Here" />
+                    <button className="searchButton" onClick={this.handleSearch}>+</button>
+                </div>
                 <div className="options">
                     <ul>
                         {this.renderFileTypeOptions()}
