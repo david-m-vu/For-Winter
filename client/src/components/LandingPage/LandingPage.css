@@ -126,7 +126,6 @@
 .diamond {
     position: absolute; 
     scale: 1;
-    /* left: 70%; */
     left: 100%;
     animation: rotate 30s linear infinite;
     opacity: 1;
@@ -147,7 +146,5 @@
 @media only screen and (max-width: 1260px) {
     .diamond {
         scale: 0.5;
-        bottom: 60%;
-        left: 32%;
     }
 }
