@@ -1,12 +1,18 @@
 import "./Choice.css";
-import hitomi1 from "./hitomi1.jpg";
-import hitomi2 from "./hitomi2.png";
 
-const Choice = () => {
+const Choice = (props) => {
+    const handleClick = (e) => {
+        props.onMakeChoice(e.target.id);
+    }
+
     return (
         <div className="Choice">
-            <img src={hitomi1} alt="first choice" />
-            <img src={hitomi2} alt="second choice" />
+            <div className="choices">
+                {props.imageChoices.map((image) => {
+                    return <img src={image.link} onClick={handleClick} alt="" id={image.id} key={image.id} />
+                })}
+            </div>
+            <h1 id="cancelButton" onClick={() => props.onCancel()}>✖</h1>
         </div>
     )
 }

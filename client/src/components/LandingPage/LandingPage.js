@@ -1,7 +1,7 @@
+import "./LandingPage.css";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./LandingPage.css";
-import izoneDiamond from "./izone-diamond2.png";
+import izoneDiamond from "./images/izone-diamond2.png";
 
 const LandingPage = () => {
     const [korean, setKorean] = useState(false);

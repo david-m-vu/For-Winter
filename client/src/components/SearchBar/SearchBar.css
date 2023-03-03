@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    
 }
 
 .search {
@@ -36,7 +37,7 @@
 }
 
 .options li.active {
-    color: seagreen;
+    color: #EF539D;
 }
 
 .searchInput {
@@ -53,7 +54,7 @@
 
 .searchButton {
     border-radius: 50%;
-    background-color: seagreen;
+    background-color: #EF539D;
     font-weight: 700;
     font-size: 1rem;
     transition: background-color 0.5s;
@@ -63,7 +64,7 @@
 
 .searchButton:hover {
     cursor: pointer;
-    background-color: #81d876;
+    background-color: #d892b3;
 }
 
 .dice {
@@ -71,5 +72,9 @@
 }
 
 .dice:hover {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
     cursor: pointer;
+    border: 1px solid white;
 }

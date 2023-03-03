@@ -1,85 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchBar.css";
-import diceIcon from "./dice-icon-white.png";
+import diceIcon from "./images/dice-icon-white.png";
 
-class SearchBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            term: "",
-            fileType: "gif",
-            imagesToSearch: 10,
-            start: 1
-        }
+const SearchBar = (props) => {
+    const [term, setTerm] = useState("");
+    const [fileType, setFileType] = useState("gif");
+    const [start, setStart] = useState(1);
 
-        this.fileTypeOptions = {
-            "Any Image": "any_image",
-            ".gif": "gif"
-        }
-
-        this.handleTermChange = this.handleTermChange.bind(this);
-        this.handleSearch = this.handleSearch.bind(this);
+    let fileTypeOptions = {
+        "Any Image": "any_image",
+        ".gif": "gif"
     }
 
-    getFileTypeClass(fileTypeOption) {
-        if (this.state.fileType === fileTypeOption) {
+    const getFileTypeClass = (type) => {
+        if (fileType === type) {
             return "active"
         } else {
             return "";
         }
     }
 
-    handleFileTypeChange(fileTypeOption) {
-        this.setState({
-            fileType: fileTypeOption
-        })
-
+    const handleFileTypeChange = (fileTypeOption) => {
+        setFileType(fileTypeOption);
     }
 
-    //Not an event handler so don't need to bind 'this'
-    renderFileTypeOptions() {
-        return Object.keys(this.fileTypeOptions).map((fileTypeOption) => {
-            let fileType = this.fileTypeOptions[fileTypeOption];
-            return <li className={this.getFileTypeClass(fileType)}
-                key={fileType}
-                onClick={this.handleFileTypeChange.bind(this, fileType)}>
+    const renderFileTypeOptions = () => {
+        return Object.keys(fileTypeOptions).map((fileTypeOption) => {
+            let type = fileTypeOptions[fileTypeOption];
+            return <li className={getFileTypeClass(type)}
+                key={type}
+                onClick={() => handleFileTypeChange(type)}>
                 {fileTypeOption}</li>
         })
     }
 
-    handleTermChange(event) {
-        this.setState({
-            term: event.target.value
-        })
+    const handleTermChange = (e) => {
+        setTerm(e.target.value);
     }
 
-    handleSearch(event) {
-        if (this.state.term !== "" && (event.type === "click" || event.keyCode === 13)) {
-            this.props.searchImages(this.state.term, this.state.start, this.state.imagesToSearch, this.state.fileType)
-            this.setState({
-                start: this.state.start + 10,
-                term: ""
-            })
+    const handleSearch = (e) => {
+        if (term !== "" && (e.type === "click" || e.keyCode === 13)) {
+            props.searchImages(term, start, fileType)
+            setStart((prev) => prev + 10);
+            setTerm("");
         }
     }
 
-
-    render() {
-        return (
-            <div className="SearchBar">
-                <div className="search">
-                    <img className="dice" src={diceIcon} alt="dice"/>
-                    <input className="searchInput" type="text" onKeyDown={this.handleSearch} onChange={this.handleTermChange} value={this.state.term} placeholder="Search Here" />
-                    <button className="searchButton" onClick={this.handleSearch}>+</button>
-                </div>
-                <div className="options">
-                    <ul>
-                        {this.renderFileTypeOptions()}
-                    </ul>
-                </div>
+    return (
+        <div className="SearchBar">
+            <div className="search">
+                <img className="dice" src={diceIcon} alt="dice" onClick={() => props.onDisplayChoice(true)}/>
+                <input className="searchInput" type="text" onKeyDown={handleSearch} onChange={handleTermChange} value={term} placeholder="Search Here" />
+                <button className="searchButton" onClick={handleSearch}>+</button>
             </div>
-        )
-    }
+            <div className="options">
+                <ul>
+                    {renderFileTypeOptions()}
+                </ul>
+            </div>
+        </div>
+    )
 }
 
 export default SearchBar
