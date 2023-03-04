@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
-import diceIcon from "./images/dice-icon-white.png";
+import diceIcon from "./images/cards-icon.jpg";
 
 const SearchBar = (props) => {
     const [term, setTerm] = useState("");
@@ -49,7 +49,7 @@ const SearchBar = (props) => {
     return (
         <div className="SearchBar">
             <div className="search">
-                <img className="dice" src={diceIcon} alt="dice" onClick={() => props.onDisplayChoice(true)}/>
+                <img className="cards" src={diceIcon} alt="cards" onClick={() => props.onDisplayChoice()}/>
                 <input className="searchInput" type="text" onKeyDown={handleSearch} onChange={handleTermChange} value={term} placeholder="Search Here" />
                 <button className="searchButton" onClick={handleSearch}>+</button>
             </div>

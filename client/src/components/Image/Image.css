@@ -3,10 +3,11 @@
 }
 
 .card {
-    height: 300px;
+    height: clamp(300px, 25vh, 25vh);
+    /* height: 300px; */
     margin: 15px;
     border-radius: 25px;
-    box-shadow: 2px 2px 3px #EF539D;
+    box-shadow: 2px 2px 3px seagreen;
 }
 
 .closeButton {

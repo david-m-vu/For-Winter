@@ -24,12 +24,22 @@ const Image = (props) => {
         }
     }
 
-    return (
-        <div className="Image">
-            <div className="image-container" onMouseOver={renderDelete} onMouseLeave={unrenderDelete}>
+    const renderImage = () => {
+        if (props.image.hasOwnProperty("image")) {
+            return (
                 <a rel="noopener noreferrer" href={getContextLink()} target="_blank">
                     <img className="card" src={props.image.link} alt=""/>
                 </a>
+            ) 
+        } else {
+            return <img className="card" src={props.image.link} alt=""/>
+        }
+    }
+
+    return (
+        <div className="Image">
+            <div className="image-container" onMouseOver={renderDelete} onMouseLeave={unrenderDelete}>
+                { renderImage() }
                 {showDelete && <h1 className="closeButton" onClick={deleteImage}>✖</h1>}
             </div>
         </div>

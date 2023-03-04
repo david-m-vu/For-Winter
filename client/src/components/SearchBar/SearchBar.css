@@ -67,14 +67,15 @@
     background-color: #d892b3;
 }
 
-.dice {
-    width: 2em;
+.cards {
+    width: 3em;
+    filter: invert(100%);
 }
 
-.dice:hover {
+.cards:hover {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
     cursor: pointer;
-    border: 1px solid white;
+    border: 1px solid black;
 }

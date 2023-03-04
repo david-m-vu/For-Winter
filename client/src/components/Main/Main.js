@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import ImagesList from "../ImageList/ImageList";
-import { getImages } from "../../requests/searches";
-import homeIcon from "./images/home-icon-green.png";
 import Choice from "./Choice/Choice";
+
+import { getImages } from "../../requests/searches";
+import IMAGES from "./images/index";
+import homeIcon from "./images/assets/home-icon.png";
 
 // temporary import
 import { v4 as uuidv4 } from "uuid";
@@ -16,10 +18,7 @@ const Main = () => {
     const [numImagesToSearch, setNumImagesToSearch] = useState(10);
     
     // temporary state : will populate component with external images later
-    const [imageChoices] = useState([
-        { link: "https://cdn.discordapp.com/attachments/987062843780251708/1080745215863828500/IMG_8518.jpg", id: uuidv4() },
-        { link: "https://cdn.discordapp.com/attachments/987062843780251708/1080737624605589514/IMG_8565.png", id: uuidv4() }
-    ])
+    const [imageChoices, setImageChoices] = useState();
 
     const handleImageRangeChange = (e) => {
         setNumImagesToSearch(e.target.value);
@@ -32,6 +31,31 @@ const Main = () => {
             setImages((prev) => [...prev, ...newImages]);
         }
     }
+
+    const displayChoices = () => {
+        setTwoRandomChoices(IMAGES);
+        setIsChoosing(true);
+    }
+
+    // temporarily uses local images
+    const setTwoRandomChoices = (imagesPulled) => {
+        let numImages = imagesPulled.length;
+        console.log(imagesPulled);
+        
+        let firstImageIndex = Math.floor(Math.random() * numImages);
+        let secondImageIndex = Math.floor(Math.random() * numImages);
+
+        //Make sure no duplicates
+        while (secondImageIndex === firstImageIndex) {
+            secondImageIndex = Math.floor(Math.random() * numImages);
+        }
+
+        let firstImage = { link: imagesPulled[firstImageIndex].link, id: uuidv4() };
+        let secondImage = { link: imagesPulled[secondImageIndex].link, id: uuidv4() };
+
+        setImageChoices([firstImage, secondImage]);
+    }
+
 
     const deleteImage = (id) => {
         let newImages = images.filter((image) => {
@@ -64,7 +88,7 @@ const Main = () => {
                         <p>10</p>
                     </div>
                 </div>
-                <SearchBar searchImages={searchImages} onDisplayChoice={setIsChoosing}/>
+                <SearchBar searchImages={searchImages} onDisplayChoice={displayChoices}/>
             </div>
             <ImagesList onDelete={deleteImage} images={images} />
 
