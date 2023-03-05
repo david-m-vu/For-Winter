@@ -1,5 +1,5 @@
 import "./Main.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import ImagesList from "../ImageList/ImageList";
@@ -16,8 +16,8 @@ const Main = () => {
     const [images, setImages] = useState([]);
     const [isChoosing, setIsChoosing] = useState(false);
     const [numImagesToSearch, setNumImagesToSearch] = useState(10);
-    
-    // temporary state : will populate component with external images later
+
+    // will populate component with external images later
     const [imageChoices, setImageChoices] = useState();
 
     const handleImageRangeChange = (e) => {
@@ -32,6 +32,10 @@ const Main = () => {
         }
     }
 
+    useEffect(() => {
+        displayChoices(IMAGES);
+    }, [])
+
     const displayChoices = () => {
         setTwoRandomChoices(IMAGES);
         setIsChoosing(true);
@@ -40,7 +44,6 @@ const Main = () => {
     // temporarily uses local images
     const setTwoRandomChoices = (imagesPulled) => {
         let numImages = imagesPulled.length;
-        console.log(imagesPulled);
         
         let firstImageIndex = Math.floor(Math.random() * numImages);
         let secondImageIndex = Math.floor(Math.random() * numImages);
@@ -56,14 +59,6 @@ const Main = () => {
         setImageChoices([firstImage, secondImage]);
     }
 
-
-    const deleteImage = (id) => {
-        let newImages = images.filter((image) => {
-            return image.id !== id;
-        })
-        setImages(newImages);
-    }
-
     const makeChoice = (choiceID) => {
         let imageToAdd = imageChoices.find((image) => image.id === choiceID)
         
@@ -73,6 +68,13 @@ const Main = () => {
 
     const cancelChoice = () => {
         setIsChoosing(false);    
+    }
+
+    const deleteImage = (id) => {
+        let newImages = images.filter((image) => {
+            return image.id !== id;
+        })
+        setImages(newImages);
     }
 
     return (

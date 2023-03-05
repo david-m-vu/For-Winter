@@ -12,6 +12,8 @@
     gap: 1em;
 }
 
+
+
 .options ul {
     display: flex;
     justify-content: center;
@@ -55,7 +57,7 @@
 .searchButton {
     border-radius: 50%;
     background-color: #EF539D;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 1rem;
     transition: background-color 0.5s;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
