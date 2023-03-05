@@ -11,6 +11,18 @@
     overflow: hidden;
     place-items: center;
 }
+
+.links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1em;
+}
+
+#github {
+    width: 2.5em;
+}
+
 .center {
     display: flex;
     flex-direction: column;
@@ -37,6 +49,7 @@
     border: 2px solid #EF539D;
     padding: 0 3em;
     letter-spacing: 0.2em;
+    animation: fade-in 3s ease-out 1
 }
 
 .startButton:hover {
@@ -117,6 +130,18 @@
 
     50% {
         color: rgb(0, 0, 0)
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0
+    }
+    to {
+        opacity: 1;
     }
 }
 

@@ -81,7 +81,7 @@ const Main = () => {
 
             <div className="searchArea">
                 <div id="imageRangeInput">
-                    <label id="imageRangeLabel" for="numImages"># of Images to Search</label>
+                    <label id="imageRangeLabel" for="numImages"># of images to search</label>
                     <div id="slider">
                         <p>1</p>
                         <input type="range" name="numImages" value={numImagesToSearch} defaultValue="10" min="1" max="10" step="1" onChange={handleImageRangeChange}/>
