@@ -1,2 +1,2 @@
 New coding app for AI. Stay tuned for more.
-![](https://giphy.com/embed/cVPcABKys8dHy)
+![](https://giphy.com/gifs/driving-cowboy-bebop-cVPcABKys8dHy)
