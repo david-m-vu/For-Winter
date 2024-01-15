@@ -1,8 +1,8 @@
 import "./LandingPage.css";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import izoneDiamond from "./images/izone-diamond2.png";
-import githubIcon from "./images/github-mark-white.png";
+import izoneDiamond from "../../assets/izone-diamond2.png";
+import githubIcon from "../../assets/github-mark-white.png";
 
 const LandingPage = () => {
     const [korean, setKorean] = useState(false);

@@ -12,8 +12,7 @@
     "uuidv4": "^6.2.13"
   },
   "scripts": {
-    "start": "nodemon functions/app.js",
-    "build": "netlify deploy --prod"
+    "start": "nodemon app.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

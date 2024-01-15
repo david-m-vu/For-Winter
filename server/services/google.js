@@ -4,12 +4,12 @@ const fetch = require("node-fetch");
 const googleBaseURL = "https://www.googleapis.com/customsearch/v1?";
 
 const fetchImages = async (term, start, imagesToSearch, fileTypeOption) => {
-    const apiKey = process.env.API_KEY;
-    const engineID = process.env.ENGINE_ID;
-    
     if (term === "") {
         return;
     }
+    const apiKey = process.env.GOOGLE_API_KEY;
+    const engineID = process.env.ENGINE_ID;
+
     let requestParams = `key=${apiKey}&cx=${engineID}&q=${term}&start=${start}&num=${imagesToSearch}&searchType=image`; 
     if (fileTypeOption !== "any_image") {
         requestParams += "&fileType=" + fileTypeOption; 
@@ -17,14 +17,11 @@ const fetchImages = async (term, start, imagesToSearch, fileTypeOption) => {
 
     let urlToFetch =  googleBaseURL + requestParams;
 
-
     try {
         const response = await fetch(urlToFetch);
-
         if (response.ok) {
             const jsonResponse = await response.json();
             const allImages = jsonResponse.items; //an array of objects with the image data
-            console.log(allImages);
 
             return allImages.map((image) => {
                 image.id = v4();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
-import cardsIcon from "./images/cards-icon.jpg";
+import cardsIcon from "../../assets/cards-icon.jpg";
 
 const SearchBar = (props) => {
     const [term, setTerm] = useState("");

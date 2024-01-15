@@ -7,11 +7,9 @@ import Choice from "./Choice/Choice";
 
 import { getImages } from "../../requests/searches";
 import IMAGES from "./images/index";
-import homeIcon from "./images/assets/home-icon.png";
+import homeIcon from "../../assets/home-icon.png";
 
 // temporary import
-import { v4 as uuidv4 } from "uuid";
-
 const Main = () => {
     const [images, setImages] = useState([]);
     const [isChoosing, setIsChoosing] = useState(false);
@@ -32,14 +30,14 @@ const Main = () => {
         }
     }
 
-    useEffect(() => {
-        displayChoices(IMAGES);
-    }, [])
-
     const displayChoices = () => {
         setTwoRandomChoices(IMAGES);
         setIsChoosing(true);
     }
+
+    // useEffect(() => {
+    //     displayChoices(IMAGES);
+    // }, [])
 
     // temporarily uses local images
     const setTwoRandomChoices = (imagesPulled) => {
@@ -53,8 +51,8 @@ const Main = () => {
             secondImageIndex = Math.floor(Math.random() * numImages);
         }
 
-        let firstImage = { link: imagesPulled[firstImageIndex].link, id: uuidv4() };
-        let secondImage = { link: imagesPulled[secondImageIndex].link, id: uuidv4() };
+        let firstImage = imagesPulled[firstImageIndex]
+        let secondImage = imagesPulled[secondImageIndex]
 
         setImageChoices([firstImage, secondImage]);
     }
@@ -86,7 +84,7 @@ const Main = () => {
                     <label id="imageRangeLabel" htmlFor="numImages"># of images to search</label>
                     <div id="slider">
                         <p>1</p>
-                        <input type="range" name="numImages" value={numImagesToSearch} min="1" max="10" step="1" onChange={handleImageRangeChange}/>
+                        <input type="range" id="numImages" value={numImagesToSearch} min="1" max="10" step="1" onChange={handleImageRangeChange}/>
                         <p>10</p>
                     </div>
                 </div>

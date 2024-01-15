@@ -1,5 +1,5 @@
-const searchRoutes = require("./routes/search.js");
-const dotenv = require("dotenv")
+const googleRoutes = require("./routes/google.js");
+require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
@@ -18,14 +18,11 @@ app.use(xss());
 
 const PORT = process.env.PORT || 3001;
 
-dotenv.config();
-
-app.get("/", async (req, res, next) => {
+app.get("/", (req, res) => {
     res.status(200).json({"message": "Dasima web server"});
 })
 
-app.use("/search", searchRoutes);
-
+app.use("/google", googleRoutes);
 
 app.listen(PORT, () => {
     console.log("Server is listening on port " + PORT)

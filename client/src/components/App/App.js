@@ -4,8 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "../Main/Main";
 import LandingPage from "../LandingPage/LandingPage";
 
-class App extends React.Component {
-  render() {
+const App = () => {
     return (
       <div className="App">
         <Router>
@@ -15,9 +14,7 @@ class App extends React.Component {
           </Routes>
         </Router>
       </div>
-
     );
-  }
 }
 
 export default App;

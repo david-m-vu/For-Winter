@@ -3,7 +3,6 @@ import "./ImageList.css";
 import Image from "../Image/Image.js";
 
 const ImageList = (props) => {
-
     return (
         <div className="ImagesList">
             {props.images.map((image) => {
